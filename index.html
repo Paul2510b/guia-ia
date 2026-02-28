@@ -1,1 +1,658 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWENTY FIVE TEN ancyd - 2510</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: {
+                        charcoal: '#121212',
+                        charcoalLight: '#1e1e1e',
+                        card: '#242424',
+                        accent: '#2563eb', 
+                        accentHover: '#1d4ed8', 
+                        silver: '#c0c0c0',
+                        silverLight: '#e5e7eb'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #121212; color: #e5e7eb; font-family: 'Inter', sans-serif; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: slideDown 0.3s ease-in-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1d4ed8; }
 
+        .fade-in { animation: fadeIn 0.4s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .option-btn { transition: all 0.2s; }
+        .option-btn:disabled { cursor: not-allowed; }
+        .correct-ans { background-color: #059669 !important; color: white !important; border-color: #059669 !important; }
+        .wrong-ans { background-color: #dc2626 !important; color: white !important; border-color: #dc2626 !important; }
+        
+        .tech-border { border: 1px solid #333; transition: border-color 0.3s ease; }
+        .tech-border:hover { border-color: #2563eb; }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-charcoal/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Branding: TWENTY FIVE TEN -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-black text-2xl text-white tracking-tighter">2510 <i class="fa-solid fa-brain text-accent"></i></span>
+                    <div class="hidden sm:flex flex-col justify-center border-l border-gray-700 pl-3 ml-1">
+                        <span class="font-bold text-xs text-silver tracking-widest leading-none">TWENTY FIVE TEN</span>
+                        <span class="font-medium text-[9px] text-accent tracking-widest leading-none mt-1">A.N.C.Y.D.</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6 text-sm font-medium">
+                        <a href="#mod1" class="text-silver hover:text-white transition-colors">1. Modelos & Prompting</a>
+                        <a href="#mod2" class="text-silver hover:text-white transition-colors">2. Workspace</a>
+                        <a href="#mod3" class="text-silver hover:text-white transition-colors">3. Ecosistema</a>
+                        <a href="#mod4" class="text-silver hover:text-white transition-colors">4. Herramientas</a>
+                        <!-- Modificado: Se elimina "Examen Final" genérico por Evaluación de Especialización -->
+                        <a href="#quiz" class="bg-accent text-white px-5 py-2 rounded-lg hover:bg-accentHover transition-colors shadow-[0_0_15px_rgba(37,99,235,0.4)]">Evaluar Dominio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-gray-800">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgb3BhY2l0eT0iMC4wNSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMzAgMEw2MCAzMEwzMCA2MEwwIDMweiIgZmlsbD0iI2ZmZiIvPjwvZz48L3N2Zz4=')] opacity-10"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-charcoalLight border border-gray-700 text-sm text-silver mb-6 backdrop-blur-sm">
+                <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span></span>
+                Sitio informativo by Jean Paul
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+                TWENTY FIVE TEN <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-300">ancyd</span>
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-silver mb-10 leading-relaxed">
+                El ecosistema pedagógico definitivo para alcanzar el dominio absoluto de la Inteligencia Artificial. Aprende la arquitectura detrás de los prompts, la automatización avanzada y la integración total en tu vida profesional.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#mod1" class="px-8 py-4 text-base font-bold rounded-lg text-white bg-accent hover:bg-accentHover transition-all shadow-[0_0_20px_rgba(37,99,235,0.5)]">Iniciar Recorrido Académico</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+
+        <!-- Módulo 1: Modelos y Prompting -->
+        <section id="mod1" class="scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+                <div class="w-12 h-12 rounded-xl bg-charcoalLight border border-gray-700 flex items-center justify-center text-accent text-xl font-bold">1</div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Modelos, Arquitectura y Prompting</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Explicación de Modelos (EXPANDIDO) -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white">Anatomía de los Modelos (Free vs PRO)</h3>
+                    <p class="text-silver leading-relaxed">Para operar eficazmente, debes entender qué "cerebro" estás utilizando. La Inteligencia Artificial no es monolítica; Google segmenta sus capacidades en tres grandes modos operativos diseñados para cargas de trabajo radicalmente distintas. Elegir el modelo incorrecto garantiza el fracaso del prompt.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-card tech-border rounded-xl p-5">
+                            <h4 class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-bolt text-yellow-400"></i> Modo Flash (El Estándar de Alta Frecuencia)</h4>
+                            <p class="text-sm text-silver mt-2 mb-2">Optimizado para <strong>velocidad extrema y volumen</strong>. Es el motor por defecto en la versión gratuita.</p>
+                            <ul class="text-xs text-gray-400 list-disc list-inside space-y-1">
+                                <li><strong>Por qué usarlo:</strong> Su arquitectura es ligera, lo que permite respuestas en milisegundos. Ideal para micro-tareas iterativas (redacción de correos, traducciones, resúmenes rápidos de textos cortos).</li>
+                                <li><strong>Limitación técnica:</strong> Su ventana de memoria a corto plazo (Context Window) es menor. Si intentas desarrollar un proyecto a lo largo de varias semanas en un solo hilo de Flash, el modelo comenzará a "olvidar" las instrucciones iniciales.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-card tech-border rounded-xl p-5">
+                            <h4 class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-gem text-blue-400"></i> Modo Pro (Plan Advanced / Paid)</h4>
+                            <p class="text-sm text-silver mt-2 mb-2">El motor de carga pesada. Posee una <strong>ventana de contexto masiva</strong> (hasta 2 millones de tokens).</p>
+                            <ul class="text-xs text-gray-400 list-disc list-inside space-y-1">
+                                <li><strong>Por qué usarlo:</strong> Diseñado para el procesamiento exhaustivo de datos. Puede mantener el "hilo" de la conversación procesando libros enteros a la vez.</li>
+                                <li><strong>Caso de uso corporativo:</strong> Subir 5 manuales técnicos de 500 páginas, una base de datos CSV de ventas y pedirle que cruce la información para encontrar correlaciones ocultas. El modelo Pro puede retener toda esa información simultáneamente sin alucinar.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-card tech-border rounded-xl p-5">
+                            <h4 class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-brain text-accent"></i> Modo Thinking (Razonamiento Profundo)</h4>
+                            <p class="text-sm text-silver mt-2 mb-2">Una arquitectura innovadora (Chain-of-Thought) donde la IA "piensa", desglosa sus pasos internamente y verifica su propia lógica antes de entregar la respuesta.</p>
+                            <ul class="text-xs text-gray-400 list-disc list-inside space-y-1">
+                                <li><strong>El paradigma cambia:</strong> Es significativamente más lento que Flash o Pro, pero es <strong>matemática y lógicamente superior</strong>.</li>
+                                <li><strong>Aplicación real:</strong> No lo uses para escribir un email. Úsalo para resolver bugs de código complejos de múltiples dependencias, acertijos analíticos, o para estructurar la planeación financiera estratégica de tu empresa a 5 años.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompting y Multimodalidad (EXPANDIDO) -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white">La Diferencia entre Preguntar y Diseñar</h3>
+                    <p class="text-silver leading-relaxed">Un modelo de IA no es Google Search; no busca respuestas preexistentes, las *calcula* estadísticamente. La fórmula <strong>R.T.F.C.</strong> es crucial porque acota el universo de probabilidades matemáticas del modelo, forzándolo a utilizar el vocabulario y la estructura exacta que tu negocio necesita.</p>
+                    
+                    <!-- Explicación Profunda de RTFC -->
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="bg-charcoalLight border border-gray-700 p-3 rounded-lg">
+                            <strong class="text-accent text-sm block">Rol (R)</strong>
+                            <span class="text-xs text-gray-400">Asignar "Actúa como un Abogado Senior" obliga al modelo a descartar lenguaje coloquial y cargar su base de datos legal, reduciendo la alucinación.</span>
+                        </div>
+                        <div class="bg-charcoalLight border border-gray-700 p-3 rounded-lg">
+                            <strong class="text-accent text-sm block">Tarea (T)</strong>
+                            <span class="text-xs text-gray-400">El verbo de acción define el resultado. Diferencia claramente entre "Resume" (acortar), "Analiza" (encontrar patrones) o "Sintetiza" (fusionar).</span>
+                        </div>
+                        <div class="bg-charcoalLight border border-gray-700 p-3 rounded-lg">
+                            <strong class="text-accent text-sm block">Formato (F)</strong>
+                            <span class="text-xs text-gray-400">Sin formato, la IA vomitará párrafos infinitos. Exige estructuras consumibles: Tablas Markdown, listas numeradas, fragmentos JSON o bloques de código.</span>
+                        </div>
+                        <div class="bg-charcoalLight border border-gray-700 p-3 rounded-lg">
+                            <strong class="text-accent text-sm block">Contexto (C)</strong>
+                            <span class="text-xs text-gray-400">Las "barreras de contención". Incluye aquí el público objetivo, las reglas de lo que NO debe decir, y la información de fondo del proyecto.</span>
+                        </div>
+                    </div>
+
+                    <!-- Comparativa de Prompts -->
+                    <div class="bg-charcoalLight rounded-xl p-6 border border-gray-700">
+                        <h4 class="font-bold text-white mb-4 text-center">Análisis Comparativo de Instrucciones</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-red-900/20 border border-red-800/50 p-4 rounded-lg">
+                                <span class="text-red-400 text-xs font-bold uppercase tracking-widest">❌ Prompt Pobre</span>
+                                <p class="text-sm text-silver mt-2 italic">"Hazme un correo para cobrarle a un cliente que no ha pagado el curso."</p>
+                                <div class="mt-3 text-[10px] text-gray-400 border-t border-red-900/30 pt-2"><strong>Resultado:</strong> Un texto genérico, robótico, que puede sonar grosero o dañar la relación comercial. El modelo adivina el tono.</div>
+                            </div>
+                            <div class="bg-green-900/20 border border-green-800/50 p-4 rounded-lg">
+                                <span class="text-green-400 text-xs font-bold uppercase tracking-widest">✅ Prompt Profesional (RTFC)</span>
+                                <p class="text-[11px] text-silver mt-2 leading-tight">
+                                    <span class="text-accent font-bold">[R]</span> Actúa como un Ejecutivo de Cuentas B2B empático.<br>
+                                    <span class="text-accent font-bold">[T]</span> Redacta un recordatorio de pago vencido evaluando alternativas.<br>
+                                    <span class="text-accent font-bold">[F]</span> Un email formal de máximo 2 párrafos, con un Call To Action en viñetas.<br>
+                                    <span class="text-accent font-bold">[C]</span> El cliente es una PYME y debe 2 meses del curso de automatización. Queremos retenerlo ofreciendo un plan de cuotas flexibles. JAMÁS uses la palabra "deuda" ni amenaces con cortes de servicio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multimodalidad (EXPANDIDO) -->
+                    <div class="bg-card tech-border rounded-xl p-6 mt-6 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 opacity-10 text-[80px] pointer-events-none"><i class="fa-solid fa-camera"></i></div>
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2"><i class="fa-solid fa-layer-group text-accent"></i> Flujo Multimodal de Alta Precisión</h4>
+                        <p class="text-sm text-silver mb-3">La IA ya no solo lee texto; ve, escucha y analiza lógicamente. El verdadero poder reside en el <strong>Prompting Cruzado Multimodal</strong>.</p>
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800 text-xs text-silverLight space-y-2 relative z-10">
+                            <p><strong>Paso 1 (Ingesta Física):</strong> Sales de una reunión de 2 horas. Tomas una fotografía de la pizarra llena de garabatos, flechas y flujos no estructurados.</p>
+                            <p><strong>Paso 2 (Ingesta Digital):</strong> Subes esa imagen al chat de Gemini junto con un documento PDF que contiene el Presupuesto Anual del cliente.</p>
+                            <p><strong>Paso 3 (La Instrucción Cruzada):</strong> <em>"Analiza la estructura del proyecto dibujado en la imagen adjunta (extrae todas las fases legibles). Luego, cruza esas fases con los límites financieros estipulados en el [PDF presupuesto]. Entrégame una tabla indicando qué fases de la pizarra son financieramente viables y cuáles exceden el presupuesto actual."</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 2: Workspace -->
+        <section id="mod2" class="scroll-mt-24 relative">
+            <div class="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+                <div class="w-12 h-12 rounded-xl bg-charcoalLight border border-gray-700 flex items-center justify-center text-accent text-xl font-bold">2</div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Workspace e Integración Práctica</h2>
+            </div>
+            
+            <div class="bg-blue-900/20 border-l-4 border-accent p-5 rounded-r-xl mb-10 shadow-lg">
+                <h4 class="text-accent font-bold text-sm uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> Recorderis Fundamental de Implementación</h4>
+                <p class="text-silver text-sm mt-2"><strong>¡La interfaz no reemplaza la arquitectura de tu instrucción!</strong> Las integraciones nativas en Docs, Gmail o Sheets son solo canales de acceso rápido. Todos los principios de prompting estructurado enseñados en el Módulo 1 (La fórmula R.T.F.C.) deben aplicarse estrictamente aquí. Si usas el botón "Ayúdame a escribir" en Docs y pides "haz un resumen", obtendrás basura. Debes pedir "[R] Actúa como auditor, [T] Resume...". La calidad del activo final dependerá siempre de la densidad de tu contexto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card Docs (EXPANDIDO) -->
+                <div class="bg-card tech-border rounded-2xl overflow-hidden shadow-lg flex flex-col group">
+                    <div class="bg-charcoalLight border-b border-gray-700 p-5 flex items-center gap-4 group-hover:bg-gray-800/50 transition-colors">
+                        <div class="bg-blue-600/20 p-3 rounded-xl"><i class="fa-solid fa-file-word text-blue-500 text-2xl"></i></div>
+                        <h3 class="font-bold text-white text-xl">Google Docs</h3>
+                    </div>
+                    <div class="p-6 flex-grow space-y-4">
+                        <p class="text-sm text-silver">Transforma la hoja en blanco en un procesador de ideas iterativo y colaborativo. No se trata de escribir más rápido, sino de sintetizar conocimiento profundo en segundos.</p>
+                        
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-pen-nib"></i> Creación In-Situ</h4>
+                            <p class="text-xs text-gray-400">Utilizando el botón flotante en el margen (Ayúdame a escribir), puedes generar esquemas de contratos, propuestas comerciales o actas. <strong>El truco de productividad:</strong> Una vez generado el bloque de texto, no lo aceptes inmediatamente. Usa el menú desplegable "Refinar" para pedirle a la IA que "Estructure en viñetas" o "Ajuste a un tono formal", delegando la edición tediosa.</p>
+                        </div>
+
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-magnifying-glass-chart"></i> Análisis Forense (Panel Lateral)</h4>
+                            <p class="text-xs text-gray-400">Aquí reside el verdadero ROI corporativo. Abre el panel lateral derecho e invoca <code>@Google Drive</code>. Puedes ordenar a la IA que lea 3 reportes PDF masivos distintos de tu nube y que redacte, en tu documento en blanco actual, un Resumen Ejecutivo comparando los riesgos mencionados en los tres archivos. Has convertido horas de lectura en una consulta de 10 segundos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Gmail (EXPANDIDO) -->
+                <div class="bg-card tech-border rounded-2xl overflow-hidden shadow-lg flex flex-col group">
+                    <div class="bg-charcoalLight border-b border-gray-700 p-5 flex items-center gap-4 group-hover:bg-gray-800/50 transition-colors">
+                        <div class="bg-red-500/20 p-3 rounded-xl"><i class="fa-solid fa-envelope text-red-500 text-2xl"></i></div>
+                        <h3 class="font-bold text-white text-xl">Gmail</h3>
+                    </div>
+                    <div class="p-6 flex-grow space-y-4">
+                        <p class="text-sm text-silver">De un simple gestor de correos a un centro de triaje de comunicaciones ejecutivas, diseñado para mitigar la sobrecarga cognitiva.</p>
+                        
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-filter"></i> Triaje Contextual Masivo</h4>
+                            <p class="text-xs text-gray-400">Enfrentarse a un hilo de 40 correos sobre el proyecto "Alpha" tras unas vacaciones es paralizante. Al abrir el panel lateral en Gmail, la IA lee la cadena entera y destila el historial. Puedes pedirle explícitamente: <em>"Resume quién tomó la decisión final en este hilo y lístame en viñetas qué acciones directas están esperando exclusivamente de mi parte."</em></p>
+                        </div>
+
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-reply-all"></i> Contención y Respuesta</h4>
+                            <p class="text-xs text-gray-400">La redacción inteligente no es para decir "Hola, ¿cómo estás?". Se utiliza para gestionar crisis. Puedes indicarle a la IA: <em>"Responde a este proveedor frustrado. Usa un tono diplomático y altamente profesional. Explica que el pago se retrasó por una auditoría bancaria (que ya terminó), pero que el comprobante saldrá mañana. Bajo ninguna circunstancia asumas responsabilidad legal."</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Sheets (EXPANDIDO) -->
+                <div class="bg-card tech-border rounded-2xl overflow-hidden shadow-lg flex flex-col group">
+                    <div class="bg-charcoalLight border-b border-gray-700 p-5 flex items-center gap-4 group-hover:bg-gray-800/50 transition-colors">
+                        <div class="bg-emerald-500/20 p-3 rounded-xl"><i class="fa-solid fa-table text-emerald-500 text-2xl"></i></div>
+                        <h3 class="font-bold text-white text-xl">Google Sheets</h3>
+                    </div>
+                    <div class="p-6 flex-grow space-y-4">
+                        <p class="text-sm text-silver">La democratización absoluta de la ciencia de datos. Ya no necesitas memorizar sintaxis matemática o macros complejas para analizar volúmenes de información.</p>
+                        
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-table-columns"></i> Ingeniería de Datos Natural</h4>
+                            <p class="text-xs text-gray-400">La herramienta "Ayúdame a organizar" elimina el tedio de crear bases de cero. Puedes escribir: <em>"Diseña un CRM para seguimiento de leads inmobiliarios. Necesito columnas para Nombre, Presupuesto, Fase (crea un menú desplegable con: Contactado, Negociando, Cierre) y Probabilidad de Éxito."</em> La IA construye la tabla con validación de datos incluida.</p>
+                        </div>
+
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-calculator"></i> Sintaxis a Demanda</h4>
+                            <p class="text-xs text-gray-400">Olvídate de buscar tutoriales para funciones anidadas. Utiliza el panel lateral para explicar el problema en lenguaje natural: <em>"Tengo el ID del cliente en A2. Dame la fórmula exacta para buscar ese ID en la pestaña 'Base2025' y devolverme el valor de la columna D. Si da error, que la celda quede en blanco, no muestres #N/A."</em> La IA te devolverá un <code>IFERROR(VLOOKUP(...))</code> listo para pegar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Slides (EXPANDIDO) -->
+                <div class="bg-card tech-border rounded-2xl overflow-hidden shadow-lg flex flex-col group">
+                    <div class="bg-charcoalLight border-b border-gray-700 p-5 flex items-center gap-4 group-hover:bg-gray-800/50 transition-colors">
+                        <div class="bg-yellow-500/20 p-3 rounded-xl"><i class="fa-solid fa-desktop text-yellow-500 text-2xl"></i></div>
+                        <h3 class="font-bold text-white text-xl">Google Slides</h3>
+                    </div>
+                    <div class="p-6 flex-grow space-y-4">
+                        <p class="text-sm text-silver">Tu asistente personal de diseño estructural y narrativa visual para presentaciones de alto impacto corporativo.</p>
+                        
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-list-ol"></i> Estructuración Narrativa</h4>
+                            <p class="text-xs text-gray-400">Antes de diseñar, planifica. Abre el panel lateral y dicta: <em>"Tengo 20 minutos para presentar los resultados de ciberseguridad al comité ejecutivo (perfil no técnico). Propón un esquema de 8 diapositivas, indicando el título de cada una y 3 puntos clave que debo mencionar para mantener su atención."</em></p>
+                        </div>
+
+                        <div class="bg-charcoal p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-accent font-bold text-xs uppercase tracking-widest mb-2"><i class="fa-solid fa-microphone-lines"></i> Coaching y Notas de Orador</h4>
+                            <p class="text-xs text-gray-400">No leas las viñetas en la pantalla. Copia el texto escueto de tu diapositiva, pégalo en el chat lateral y ordena: <em>"Actúa como un Coach de Oratoria TEDx. Toma estos 4 puntos clave y transfórmalos en un guion conversacional de 2 minutos para el orador, incluyendo pausas estratégicas y una analogía fácil de entender."</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 3: Ecosistema (EXPANDIDO) -->
+        <section id="mod3" class="scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+                <div class="w-12 h-12 rounded-xl bg-charcoalLight border border-gray-700 flex items-center justify-center text-accent text-xl font-bold">3</div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Ecosistema Avanzado y Automatización Agéntica</h2>
+            </div>
+
+            <p class="text-lg text-silver mb-10">La evolución profesional dicta que pasamos de interactuar manualmente con la IA a <strong>orquestarla</strong>. En este nivel de especialización avanzada, dejas de ser un operador de software para convertirte en el Arquitecto de Sistemas que diseña agentes y flujos que trabajan en segundo plano 24/7.</p>
+
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Flujos y Agentes -->
+                <div class="bg-card tech-border rounded-2xl p-8 shadow-2xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-purple-600/20 p-4 rounded-full"><i class="fa-solid fa-network-wired text-purple-500 text-2xl"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Flujos de Trabajo, Gemas y Agentes</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <!-- Gemas Detallado -->
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-3 border-b border-gray-700 pb-2">Las Gemas (Asistentes Especializados)</h4>
+                            <p class="text-sm text-silver mb-4 leading-relaxed">Escribir la fórmula RTFC cada vez que realizas una tarea recurrente es ineficiente. Una "Gema" (Gem) en la versión Advanced resuelve esto: es una versión clonada y pre-entrenada de la IA. Le configuras un <strong>Prompt de Sistema (System Instructions)</strong> inquebrantable que define su comportamiento, limitaciones y formato de salida perpetuo.</p>
+                            <div class="bg-charcoalLight p-5 rounded-lg border border-gray-700 shadow-inner">
+                                <strong class="text-xs text-accent uppercase tracking-widest block mb-2"><i class="fa-solid fa-user-tie"></i> Caso de Implementación Real:</strong>
+                                <p class="text-xs text-gray-400 mb-3">Creación de la Gema <em>"Auditor de Contratos"</em>.</p>
+                                <p class="text-[11px] text-gray-500 font-mono bg-charcoal p-2 rounded"><strong>System Prompt:</strong> "Tu único trabajo es recibir PDFs de contratos. Buscar cláusulas de penalización ocultas, resaltarlas textualmente, y explicar el riesgo financiero en un lenguaje coloquial para no-abogados. Nunca saludes, entrega siempre una tabla de riesgos inmediatamente."</p>
+                                <p class="text-xs text-accent mt-3 font-bold">Resultado: Una vez guardada, solo abres esta Gema, arrastras el PDF y ella ejecuta su protocolo sin necesidad de darle instrucciones extra.</p>
+                            </div>
+                        </div>
+
+                        <!-- Orquestación Make/Zapier Detallado -->
+                        <div>
+                            <h4 class="text-white font-bold text-lg mb-3 border-b border-gray-700 pb-2">Orquestación Lógica (Make/Zapier)</h4>
+                            <p class="text-sm text-silver mb-4 leading-relaxed">Conectar el cerebro lógico de Gemini con herramientas externas del mundo real (Slack, Shopify, Bases de Datos). En la automatización moderna, mover un dato de un lugar a otro ya no es suficiente; la IA debe actuar como el <strong>"Router Inteligente"</strong> que analiza y toma decisiones en medio del flujo.</p>
+                            <div class="bg-charcoalLight p-5 rounded-lg border border-gray-700 shadow-inner">
+                                <strong class="text-xs text-accent uppercase tracking-widest block mb-2"><i class="fa-solid fa-code-branch"></i> Arquitectura Paso a Paso (Router API):</strong>
+                                <ol class="text-xs text-gray-400 mt-2 space-y-3 list-decimal list-inside">
+                                    <li><strong>El Gatillo (Trigger):</strong> Ingresa un nuevo registro en Google Forms con una queja de un cliente escrita libremente.</li>
+                                    <li><strong>El Cerebro (Módulo Gemini):</strong> Make toma ese texto y lo envía a la IA con un prompt estricto: <em>"Analiza este texto. Analiza el sentimiento. Devuelve EXCLUSIVAMENTE un bloque JSON con las variables: 'Sentimiento' y 'Prioridad' (Alta/Baja según la urgencia del texto)."</em></li>
+                                    <li><strong>El Enrutamiento (Router):</strong> Make lee la variable JSON extraída por Gemini. Si la prioridad es "Alta", ejecuta una alerta roja en el canal de Slack de soporte. Si es "Baja", simplemente registra el ticket silenciosamente en un CRM de Sheets.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apps Script (EXPANDIDO) -->
+                <div class="bg-gradient-to-br from-charcoalLight to-card border border-gray-700 rounded-2xl p-10 relative overflow-hidden shadow-2xl">
+                    <div class="absolute right-[-20px] bottom-[-20px] opacity-10 text-[200px] pointer-events-none"><i class="fa-brands fa-js"></i></div>
+                    <h3 class="text-3xl font-bold text-white mb-4 relative z-10">Automatización Nativa: Apps Script (Cero-Código)</h3>
+                    <p class="text-silver mb-8 max-w-4xl relative z-10 leading-relaxed">Google Apps Script es el motor de código oculto detrás de todo Workspace. Tradicionalmente exclusivo para programadores, hoy ha sido democratizado. La IA asume el rol del desarrollador de software (escribiendo el JavaScript complejo); tu labor es puramente arquitectónica: describir el proceso funcional.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                        <div class="bg-charcoal p-6 rounded-2xl border border-gray-800 shadow-sm hover:border-accent transition-colors">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center text-accent font-bold mb-4">01</div>
+                            <h4 class="font-bold text-white mb-2">Definición de Lógica (Prompt)</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">La precisión es vital. Pídele a Gemini: <em>"Escribe un Apps Script para Sheets. Evento: Alguien edita la pestaña 'Leads'. Condición: Si el valor de la columna C (Estado) cambia específicamente a la palabra 'Aprobado'. Acción: Toma el correo de la columna B de esa misma fila y envíale un email de confirmación con el asunto 'Acceso Concedido'."</em></p>
+                        </div>
+                        <div class="bg-charcoal p-6 rounded-2xl border border-gray-800 shadow-sm hover:border-accent transition-colors">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center text-accent font-bold mb-4">02</div>
+                            <h4 class="font-bold text-white mb-2">Inserción en el Editor</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed">Abre tu Google Sheet, ve al menú superior <code>Extensiones > Apps Script</code>. Se abrirá un entorno de desarrollo. Borra la función genérica <code>myFunction()</code> que aparece por defecto. El lienzo debe quedar en blanco. Pega exactamente el bloque de código que la IA generó para ti y presiona Guardar (el icono del disquete).</p>
+                        </div>
+                        <div class="bg-charcoal p-6 rounded-2xl border border-gray-800 shadow-sm hover:border-accent transition-colors">
+                            <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center text-accent font-bold mb-4">03</div>
+                            <h4 class="font-bold text-white mb-2">Permisos y Activadores (Triggers)</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed"><strong>Paso Crítico:</strong> Haz clic en el botón "Ejecutar" superior. Google te lanzará una alerta de seguridad porque el script intentará usar tu Gmail. Haz clic en "Configuración Avanzada" y "Permitir". Finalmente, ve al menú lateral izquierdo (icono de Reloj), añade un <em>Activador</em> y configúralo para que la función principal se ejecute <em>"Al editarse"</em>. Tu sistema ahora es autónomo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 4: Herramientas (EXPANDIDO) -->
+        <section id="mod4" class="scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+                <div class="w-12 h-12 rounded-xl bg-charcoalLight border border-gray-700 flex items-center justify-center text-accent text-xl font-bold">4</div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Ecosistema Visual y Herramientas Avanzadas</h2>
+            </div>
+
+            <p class="text-lg text-silver mb-10">La convergencia de modalidades. Explora las herramientas satélite de Google diseñadas para flujos de trabajo altamente específicos: desde el control granular de imágenes hasta la gestión de conocimiento colaborativo y privado.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Images (RESTRICCIÓN DE VERSIÓN APLICADA) -->
+                <div class="bg-card tech-border rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> Generación de Imágenes con IA</h3>
+                    <p class="text-sm text-silver mb-6">Impulsado por el motor de diseño visual integrado de Google (arquitectura de vanguardia text-to-image y text-to-image editing), este sistema te permite abandonar los bancos de fotos de stock y crear/modificar activos visuales hiper-realistas y libres de copyright donde tú controlas cada píxel.</p>
+                    
+                    <ul class="space-y-5">
+                        <li class="bg-charcoalLight p-5 rounded-xl border border-gray-800">
+                            <strong class="text-white block mb-2"><i class="fa-solid fa-palette text-accent mr-2"></i>Creación Directa (Text-to-Image)</strong>
+                            <span class="text-xs text-gray-400 leading-relaxed block">Para evitar resultados genéricos, tu prompt de imagen debe estar estructurado técnicamente. Especifica siempre: <strong>[Sujeto Principal] + [Entorno/Fondo] + [Ángulo de cámara] + [Iluminación] + [Medio/Estilo: ej. Fotografía DSLR, render 3D, ilustración vectorial]</strong>.</span>
+                        </li>
+                        <li class="bg-charcoalLight p-5 rounded-xl border border-gray-800">
+                            <strong class="text-white block mb-2"><i class="fa-solid fa-crop-simple text-accent mr-2"></i>Edición In-Painting y Arreglos</strong>
+                            <span class="text-xs text-gray-400 leading-relaxed block">La función más potente para negocios. Ingresa una fotografía real de un producto (ej. una taza de café en una mesa fea) y modifícala mediante texto. Seleccionas el fondo, y escribes: "Reemplazar por una mesa de madera rústica en una cafetería iluminada por el sol matutino". La IA reconstruye el entorno respetando las sombras y reflejos del producto original.</span>
+                            <div class="mt-4 p-4 border border-dashed border-gray-600 rounded bg-charcoal flex flex-col items-center justify-center text-center">
+                                <span class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Muestra Conceptual de Flujo de Edición:</span>
+                                <span class="text-xs text-silver italic">Imagen A (Zapato en fondo blanco) ➜ Selección de Área ➜ Prompt: "Suelo de mármol con hojas de otoño cayendo" ➜ Imagen B (Zapato integrado fotorrealista).</span>
+                            </div>
+                        </li>
+                        <li class="bg-charcoalLight p-5 rounded-xl border border-gray-800">
+                            <strong class="text-white block mb-2"><i class="fa-solid fa-object-group text-accent mr-2"></i>Transferencia de Estilo y Composición</strong>
+                            <span class="text-xs text-gray-400 leading-relaxed block">Extrae la estructura geométrica de una imagen y combínala con la paleta de colores y textura de otra. Ideal para crear consistencia de marca en múltiples recursos visuales generados para una misma campaña.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Google Canvas (EXPANDIDO) -->
+                    <div class="bg-gradient-to-br from-charcoalLight to-card border border-gray-700 rounded-2xl p-8 relative overflow-hidden group hover:border-accent transition-all duration-300">
+                        <div class="absolute -right-4 -top-4 text-6xl text-gray-800/30 group-hover:text-accent/10 transition-colors duration-500"><i class="fa-solid fa-pen-ruler"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Google Canvas</h3>
+                        <p class="text-sm text-silver leading-relaxed relative z-10 mb-4">La evolución de la interfaz de usuario para trabajo complejo. El chat lineal tradicional (tipo burbuja de mensajes) es ineficiente para escribir código largo, ensayos o informes porque la información se pierde al hacer scroll hacia arriba.</p>
+                        <p class="text-xs text-gray-400 leading-relaxed relative z-10"><strong>Cómo funciona:</strong> Canvas presenta una interfaz de pantalla dividida (Split-Screen). A la izquierda mantienes el chat y los prompts. A la derecha, la IA genera un documento persistente. El mayor beneficio es la <em>edición en línea (Inline Editing)</em>: puedes sombrear un párrafo específico del documento derecho y decirle a la IA: "Reescribe solo esta parte para que sea más corta", sin afectar el resto del texto estructurado. Es un entorno de colaboración humano-máquina real.</p>
+                    </div>
+
+                    <!-- NotebookLM (EXPANDIDO) -->
+                    <div class="bg-gradient-to-br from-charcoalLight to-card border border-gray-700 rounded-2xl p-8 relative overflow-hidden group hover:border-accent transition-all duration-300">
+                        <div class="absolute -right-4 -top-4 text-6xl text-gray-800/30 group-hover:text-accent/10 transition-colors duration-500"><i class="fa-solid fa-book-journal-whills"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3 relative z-10">NotebookLM</h3>
+                        <p class="text-sm text-silver leading-relaxed relative z-10 mb-4">El asistente de investigación definitivo. Utiliza un principio tecnológico llamado "Grounding" (anclaje de datos): tú creas un cuaderno y le subes tus propios PDFs, URLs y notas de reuniones.</p>
+                        <ul class="text-xs text-gray-400 space-y-2 relative z-10 list-disc list-inside">
+                            <li><strong>Conocimiento Estricto:</strong> La IA "olvida" el internet y responde <em>exclusivamente</em> basándose en los documentos que le proporcionaste, citando la fuente exacta de su respuesta para evitar alucinaciones críticas en estudios o análisis legales.</li>
+                            <li><strong>Audio Overviews (El Game-Changer):</strong> Una función revolucionaria que toma todos tus documentos subidos y genera automáticamente un podcast conversacional. Dos anfitriones de IA (con voces hiperrealistas) discuten, debaten y resumen el contenido de tu proyecto, permitiéndote consumir reportes densos mientras conduces o caminas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="scroll-mt-24 pt-16 border-t border-gray-800">
+            <div class="text-center mb-12">
+                <!-- Modificado: Eliminación de "Maestría" -->
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tighter">Evaluación de Especialización Avanzada</h2>
+                <p class="text-silver max-w-3xl mx-auto text-lg">Esta evaluación está diseñada con una dificultad estrictamente progresiva. Aborda desde fundamentos analíticos hasta resolución de escenarios de orquestación arquitectónica compleja. Demuestra tu nivel como Arquitecto de IA.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Start Screen -->
+                <div id="quiz-start" class="bg-card tech-border rounded-3xl p-12 text-center shadow-2xl fade-in block relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none"></div>
+                    <i class="fa-solid fa-shield-halved text-7xl text-accent mb-8 drop-shadow-[0_0_15px_rgba(37,99,235,0.5)]"></i>
+                    <h3 class="text-3xl font-black text-white mb-3">Comienza tu Evaluación</h3>
+                    <p class="text-silver mb-10 text-sm uppercase tracking-widest font-bold">10 Preguntas Progresivas • Cero Predictibilidad</p>
+                    <button onclick="startQuiz()" class="bg-white text-charcoal font-black uppercase tracking-widest text-sm px-12 py-5 rounded-2xl hover:bg-accent hover:text-white transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] active:scale-95">Iniciar Protocolo de Examen</button>
+                </div>
+
+                <!-- Quiz Container -->
+                <div id="quiz-container" class="bg-card tech-border rounded-3xl p-8 md:p-12 shadow-2xl hidden fade-in">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-black text-silver uppercase tracking-widest" id="question-tracker">Pregunta 1 de 10</span>
+                        <span class="text-xs font-black text-accent bg-accent/10 border border-accent/20 px-4 py-2 rounded-full uppercase tracking-widest" id="score-tracker">Puntuación: 0</span>
+                    </div>
+                    
+                    <div class="w-full bg-charcoalLight rounded-full h-2 mb-10 overflow-hidden border border-gray-800">
+                        <div class="bg-accent h-2 rounded-full transition-all duration-500 ease-out shadow-[0_0_10px_rgba(37,99,235,0.8)]" id="progress-bar" style="width: 10%"></div>
+                    </div>
+
+                    <h3 id="question-text" class="text-xl md:text-2xl font-bold text-white mb-10 leading-relaxed">¿Pregunta?</h3>
+                    
+                    <div id="options-container" class="space-y-4 mb-10">
+                        <!-- Options injected by JS -->
+                    </div>
+
+                    <div class="flex justify-end hidden" id="next-btn-container">
+                        <button onclick="nextQuestion()" class="bg-accent hover:bg-accentHover text-white font-black px-8 py-4 rounded-xl transition-all flex items-center gap-3 text-sm uppercase tracking-widest shadow-[0_0_15px_rgba(37,99,235,0.4)] active:scale-95">
+                            Confirmar y Avanzar <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Screen -->
+                <div id="quiz-results" class="bg-card tech-border rounded-3xl p-12 text-center shadow-2xl hidden fade-in">
+                    <div id="result-icon" class="text-7xl mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"></div>
+                    <h3 class="text-4xl font-black text-white mb-3 tracking-tighter" id="result-title">Análisis Finalizado</h3>
+                    <p class="text-xl text-silver mb-8 font-medium">Puntuación de Rendimiento: <span id="final-score" class="font-black text-accent text-4xl mx-3">0</span> / 10</p>
+                    <div class="w-16 h-1 bg-gray-700 mx-auto mb-8 rounded-full"></div>
+                    <p class="text-gray-300 mb-12 text-base leading-relaxed max-w-xl mx-auto" id="result-message">Mensaje de feedback</p>
+                    <button onclick="startQuiz()" class="bg-charcoalLight border border-gray-600 hover:border-accent text-white font-black text-xs uppercase tracking-widest px-10 py-5 rounded-2xl transition-all shadow-lg">Reiniciar Evaluación</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800 pt-16 pb-8 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <span class="font-black text-2xl text-white tracking-tighter">2510 <i class="fa-solid fa-brain text-accent"></i></span>
+            </div>
+            <h2 class="text-xl font-bold text-white tracking-widest mb-2 uppercase">TWENTY FIVE TEN ancyd</h2>
+            <p class="text-silver font-medium mb-8 text-xs uppercase tracking-[0.3em]">Plataforma Informativa by Jean Paul</p>
+            <div class="border-t border-gray-800 pt-8 text-gray-600 text-xs">
+                &copy; 2026 TWENTY FIVE TEN. Ecosistema educativo de Inteligencia Artificial enfocado en el dominio absoluto profesional.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: LOGICA AVANZADA DE QUIZ -->
+    <script>
+        /* Banco de preguntas con nivel de dificultad explícito (1 = Básico, 5 = Experto).
+           Regla estricta Anti-Predictibilidad aplicada: La longitud de las respuestas varía intencionalmente. 
+           En preguntas avanzadas, la respuesta correcta es a menudo un resumen lógico corto, mientras 
+           que los distractores son explicaciones técnicas extensas pero erróneas. */
+        const questionBank = [
+            // Nivel 1: Fundamentos
+            { difficulty: 1, q: "En la arquitectura RTFC, ¿qué elemento es el responsable directo de acotar los límites del modelo y evitar que alucine información que no corresponde a tu negocio?", options: ["Desarrollar una descripción exhaustiva del formato de salida (Tablas, JSON o CSV) para que la estructura sea procesable por otros sistemas.", "El Rol.", "El Contexto.", "La instrucción precisa de la Tarea mediante el uso de verbos de acción fuertes y secuencias operativas."], correct: 2 },
+            { difficulty: 1, q: "¿Cuál es la diferencia estructural que hace al Modo Thinking más adecuado para estrategias que el Modo Flash?", options: ["Flash prioriza velocidad; Thinking desglosa la lógica y verifica sus pasos.", "El Modo Thinking requiere una conexión de alta velocidad a servidores cuánticos dedicados que no están disponibles en la versión gratuita Flash.", "El Modo Flash procesa imágenes rasterizadas, mientras que el Modo Thinking es exclusivamente para formatos vectoriales.", "Ninguna de las opciones anteriores describe correctamente los modelos."], correct: 0 },
+            { difficulty: 2, q: "En el contexto de la 'Multimodalidad Nativa', si necesitas evaluar la viabilidad de un proyecto basado en un boceto dibujado a mano frente a un presupuesto estricto, ¿cuál es el enfoque correcto?", options: ["Debes transcribir manualmente todo el contenido de la pizarra a texto plano antes de subir el presupuesto en formato PDF para que el modelo pueda leerlo.", "El procesamiento multimodal requiere el uso de APIs externas de terceros para OCR (Reconocimiento Óptico de Caracteres).", "Ingestar la fotografía del boceto y el PDF del presupuesto en el mismo chat y dictar una instrucción cruzada.", "Subir la foto primero, esperar la transcripción, abrir un chat nuevo y subir el PDF."], correct: 2 },
+            
+            // Nivel 2 y 3: Workspace
+            { difficulty: 2, q: "Al utilizar el panel lateral de Gemini en Google Docs, ¿cuál es el beneficio analítico principal de invocar el comando '@Google Drive'?", options: ["Permite compartir instantáneamente el documento actual con todos los miembros de la empresa modificando los permisos de acceso y el cifrado de seguridad a nivel de carpeta.", "Sincroniza el almacenamiento local liberando espacio en el disco duro del usuario mediante la compresión algorítmica de archivos antiguos.", "Crear presentaciones de Slides.", "Extrae, resume e inyecta datos de PDFs masivos externos directamente en tu lienzo actual."], correct: 3 },
+            { difficulty: 3, q: "Al usar la función 'Ayúdame a escribir' en Workspace, ¿por qué es crítico aplicar la fórmula RTFC en lugar de pedir simplemente 'resume este contrato'?", options: ["Porque si no especificas el Rol y el Contexto, la interfaz utilizará una base de probabilidad genérica, generando un activo de baja calidad que no se alinea con las directrices legales o el tono corporativo de tu empresa.", "La plataforma Workspace bloquea las peticiones cortas por seguridad.", "Porque RTFC es el único lenguaje de programación que la interfaz nativa de Docs puede compilar.", "El comando no funcionará sin un formato JSON explícito."], correct: 0 },
+            { difficulty: 3, q: "En la integración con Google Sheets, ¿cuál es el rol principal de la IA al solicitar una fórmula compleja (como INDEX/MATCH)?", options: ["El modelo procesa toda la información en sus propios servidores y devuelve un gráfico rasterizado evitando que el usuario interactúe con los datos crudos.", "Actúa como Ingeniero de Fórmulas: tú describes la lógica y ella entrega la sintaxis exacta.", "Borra las columnas con errores y las reemplaza por ceros absolutos para mantener la estabilidad del libro de cálculo.", "Delega la ejecución a una macro grabada en lenguaje Python."], correct: 1 },
+            
+            // Nivel 4: Herramientas Visuales y Gestión
+            { difficulty: 4, q: "En la generación de imágenes moderna, la función de edición (In-Painting) se diferencia de la creación de texto-a-imagen (Text-to-Image) principalmente porque:", options: ["La edición (In-Painting) altera los metadatos EXIF de un archivo sin cambiar su apariencia visual para que sea compatible con diferentes sistemas operativos.", "Requiere conocimientos profundos de diseño en software como Photoshop para preparar las capas vectoriales antes de subirlas al modelo de IA.", "Permite modificar zonas específicas de una fotografía real usando texto (ej. cambiar un fondo) respetando la iluminación original del sujeto intacto.", "Solo funciona con paletas de colores monocromáticas."], correct: 2 },
+            { difficulty: 4, q: "De acuerdo con el ecosistema de herramientas avanzadas, ¿por qué 'Google Canvas' representa una evolución frente al chat lineal tradicional para trabajos complejos?", options: ["Ofrece un entorno de pantalla dividida que permite la edición en línea (Inline Editing) sobre un documento persistente generado por IA.", "Porque Canvas es la única herramienta capaz de generar código HTML y exportarlo automáticamente a servidores web sin intervención manual del usuario.", "Limita las interacciones a comandos de voz, eliminando la necesidad de teclado.", "Porque Canvas utiliza exclusivamente el modelo Flash."], correct: 0 },
+            { difficulty: 4, q: "¿Cuál es el valor tecnológico diferencial del 'Grounding' (Anclaje) que utiliza NotebookLM frente a interactuar con Gemini directamente?", options: ["El modelo olvida el internet público y basa sus respuestas o podcasts (Audio Overviews) estrictamente en los documentos privados que tú le subes, eliminando las alucinaciones.", "Es una red de servidores físicos interconectados que garantiza que los datos nunca salgan del país donde fueron generados, cumpliendo normativas internacionales.", "Permite a múltiples usuarios editar el mismo documento en tiempo real, similar a Google Docs.", "NotebookLM está diseñado exclusivamente para renderizar gráficos matemáticos."], correct: 0 },
+            
+            // Nivel 5: Alta Complejidad Analítica y Automatización Agéntica (Regla de Dificultad)
+            { difficulty: 5, q: "Comprendiendo la arquitectura de Apps Script No-Code: Si le pides a la IA un código para enviar correos y lo pegas en el editor, ¿qué evento crítico en la arquitectura de Workspace debe ocurrir para que el sistema opere autónomamente sin que tú estés frente al PC?", options: ["Debes instalar un plugin de terceros en tu navegador Chrome que mantenga la sesión activa mediante tokens rotativos cada 24 horas, y luego mantener la ventana del correo abierta permanentemente.", "Configurar manualmente un 'Activador' (Trigger), como el evento 'Al editarse', posterior a la concesión de permisos de seguridad de Google.", "El código de la IA incluye por defecto un bucle infinito (while loop) que escanea la hoja de cálculo cada 5 milisegundos usando los servidores globales de Google Cloud, por lo que no se requiere acción adicional.", "Pagar y vincular una licencia comercial de Google Cloud Platform (GCP) para acceder a los puertos SMTP de envío masivo de correos."], correct: 1 },
+            { difficulty: 5, q: "Caso de Arquitectura Agéntica: Deseas estandarizar la revisión de propuestas legales sin escribir el prompt cada vez. La solución más óptima dentro de Gemini Advanced es:", options: ["Crear una 'Gema' (Gem) con Instrucciones de Sistema rígidas que definan permanentemente su rol como auditor legal y sus reglas de formato para todos los futuros PDFs que se le arrojen.", "Exportar el modelo Pro a tu servidor local y entrenarlo durante 3 semanas alimentándolo exclusivamente con el diccionario jurídico de tu país antes de conectarlo a la interfaz.", "Elaborar un documento en Google Docs con el prompt maestro, y hacer que todos los empleados de la empresa lo copien y peguen manualmente cada vez que inician un chat nuevo.", "Configurar una automatización en Zapier que envíe un correo electrónico a un abogado humano cada vez que se detecte la palabra 'contrato' en un archivo."], correct: 0 },
+            { difficulty: 5, q: "Análisis de Flujo (Router Inteligente): Un formulario de reclamos genera cientos de entradas. Quieres que SOLO las quejas de clientes VIP mencionando 'demandas legales' alerten a gerencia por Slack; el resto debe responderse pacíficamente por correo. ¿Cuál es el diseño arquitectónico correcto de la automatización?", options: ["Se requiere crear un Apps Script de más de 500 líneas que extraiga cada respuesta, la encripte, y luego delegue la revisión del sentimiento de la queja a un operario humano para que decida el canal.", "Usar NotebookLM. Subir todos los reclamos en bloque y pedirle a la herramienta que genere un 'Audio Overview' (Podcast) para que los gerentes lo escuchen por la mañana y decidan qué hacer.", "Gatillo en el formulario -> Gemini extrae JSON (Prioridad y Sentimiento) -> El Enrutador (Make/Zapier) usa esas variables para enviar a Slack o disparar el correo.", "Configurar una Gema especializada y vincularla directamente al API de Slack, otorgándole permisos de administrador absoluto para que elimine los mensajes problemáticos antes de que sean leídos."], correct: 2 }
+        ];
+
+        // Estado del Quiz
+        let selectedQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+
+        const startScreen = document.getElementById('quiz-start');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsScreen = document.getElementById('quiz-results');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtnContainer = document.getElementById('next-btn-container');
+        const questionTracker = document.getElementById('question-tracker');
+        const scoreTracker = document.getElementById('score-tracker');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            // LÓGICA DE DIFICULTAD PROGRESIVA:
+            // 1. Barajamos el banco aleatoriamente
+            let shuffled = [...questionBank].sort(() => 0.5 - Math.random());
+            // 2. Extraemos 10 preguntas
+            let picked = shuffled.slice(0, 10);
+            // 3. Ordenamos esas 10 de menor a mayor dificultad para asegurar una experiencia pedagógica estructurada.
+            selectedQuestions = picked.sort((a, b) => a.difficulty - b.difficulty);
+            
+            currentIndex = 0;
+            score = 0;
+            
+            startScreen.classList.add('hidden');
+            resultsScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            quizContainer.classList.add('block');
+            
+            updateTrackers();
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            nextBtnContainer.classList.add('hidden');
+            const qData = selectedQuestions[currentIndex];
+            questionText.innerText = qData.q;
+            
+            optionsContainer.innerHTML = '';
+            
+            // Barajar las opciones para que la correcta no siempre esté en la misma posición matemática
+            let opts = qData.options.map((opt, index) => ({ text: opt, originalIndex: index }));
+            opts = opts.sort(() => 0.5 - Math.random());
+
+            opts.forEach((optData, visualIndex) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full text-left p-5 rounded-2xl border border-gray-700 bg-charcoalLight text-silver hover:bg-gray-800 hover:border-accent hover:text-white font-medium text-sm leading-relaxed shadow-sm';
+                btn.innerHTML = `<span class="inline-block w-7 h-7 rounded-full border border-gray-500 text-center text-xs leading-[1.6rem] mr-4 font-black bg-charcoal">${String.fromCharCode(65 + visualIndex)}</span> ${optData.text}`;
+                
+                // La verificación se hace contra el originalIndex
+                btn.onclick = () => handleAnswer(btn, optData.originalIndex, qData.correct, opts);
+                optionsContainer.appendChild(btn);
+            });
+            
+            const progressPercentage = ((currentIndex) / 10) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        function handleAnswer(selectedBtn, selectedOriginalIdx, correctIdx, currentOpts) {
+            const allBtns = optionsContainer.querySelectorAll('button');
+            allBtns.forEach(btn => btn.disabled = true);
+            
+            if (selectedOriginalIdx === correctIdx) {
+                selectedBtn.classList.add('correct-ans');
+                score++;
+                updateTrackers();
+            } else {
+                selectedBtn.classList.add('wrong-ans');
+                // Encontrar el botón correcto en la UI basándonos en currentOpts
+                const correctUIIindex = currentOpts.findIndex(o => o.originalIndex === correctIdx);
+                allBtns[correctUIIindex].classList.add('correct-ans');
+            }
+            
+            nextBtnContainer.classList.remove('hidden');
+            nextBtnContainer.classList.add('fade-in');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < 10) {
+                updateTrackers();
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateTrackers() {
+            questionTracker.innerText = `Análisis ${currentIndex + 1} / 10`;
+            scoreTracker.innerText = `Puntos Obtenidos: ${score}`;
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+            resultsScreen.classList.add('block');
+            
+            document.getElementById('final-score').innerText = score;
+            const messageEl = document.getElementById('result-message');
+            const iconEl = document.getElementById('result-icon');
+            
+            if (score >= 9) {
+                iconEl.innerHTML = '<i class="fa-solid fa-brain text-accent"></i>';
+                messageEl.innerText = "¡Nivel Experto Alcanzado! Has demostrado un dominio absoluto de la arquitectura analítica, prompting avanzado y orquestación del ecosistema TWENTY FIVE TEN ancyd.";
+            } else if (score >= 6) {
+                iconEl.innerHTML = '<i class="fa-solid fa-bolt text-silver"></i>';
+                messageEl.innerText = "Sólida especialización operativa. Tienes un excelente manejo de la interfaz y herramientas, pero la arquitectura de agentes y la teoría de los modelos requiere una relectura estratégica.";
+            } else {
+                iconEl.innerHTML = '<i class="fa-solid fa-layer-group text-gray-600"></i>';
+                messageEl.innerText = "Análisis completado. Los fundamentos técnicos requieren refuerzo. Te recomendamos reiniciar el recorrido académico prestando especial atención a las lógicas subyacentes explicadas en cada módulo.";
+            }
+        }
+    </script>
+</body>
+</html>
